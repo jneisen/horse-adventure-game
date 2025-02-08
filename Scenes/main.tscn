@@ -1,13 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://c82q0po1x4ys3"]
+[gd_scene load_steps=5 format=3 uid="uid://c82q0po1x4ys3"]
 
 [ext_resource type="PackedScene" uid="uid://gbemyfysnny6" path="res://Scenes/Field.tscn" id="1_yurip"]
 [ext_resource type="PackedScene" uid="uid://eygpgnpjdnxr" path="res://Scenes/horse.tscn" id="2_mgbny"]
+[ext_resource type="PackedScene" uid="uid://dhh88arwhjaht" path="res://Scenes/ladder.tscn" id="2_q701c"]
 [ext_resource type="PackedScene" uid="uid://ba7d8xw1cc0lm" path="res://Scenes/cliff.tscn" id="3_ut33s"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Horse" parent="." instance=ExtResource("1_yurip")]
 position = Vector2(1466, 1031)
+
+[node name="Ladder" parent="Horse" instance=ExtResource("2_q701c")]
+z_index = 1
+position = Vector2(1500, 1500)
+scale = Vector2(0.75, 0.6)
 
 [node name="Geometry" type="Node2D" parent="."]
 
