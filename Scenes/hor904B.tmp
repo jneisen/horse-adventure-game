@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://eygpgnpjdnxr"]
+
+[ext_resource type="Script" path="res://Scripts/horseMovement.gd" id="1_35agi"]
+[ext_resource type="Texture2D" uid="uid://b57wyhvhtd0no" path="res://Sprites/placeholderHorse.png" id="2_j7jt5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pcj7o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j7jt5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibmj7"]
+size = Vector2(210, 94.5)
+
+[node name="Horse" type="Node2D"]
+z_index = 1
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_35agi")
+
+[node name="sprite" type="AnimatedSprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_pcj7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-2, 75.75)
+shape = SubResource("RectangleShape2D_ibmj7")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]

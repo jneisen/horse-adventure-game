@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ba7d8xw1cc0lm"]
+
+[ext_resource type="Script" path="res://Scripts/cliff.gd" id="1_hxley"]
+[ext_resource type="Texture2D" uid="uid://cw63mccdc6bjt" path="res://Sprites/cliff.png" id="1_plsth"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ywjf"]
+size = Vector2(2120, 220)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ch55"]
+size = Vector2(2100, 200)
+
+[node name="Cliff" type="Node2D" node_paths=PackedStringArray("regularCollider")]
+script = ExtResource("1_hxley")
+regularCollider = NodePath("StaticBody2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -94)
+shape = SubResource("RectangleShape2D_7ywjf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_plsth")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2, -91)
+shape = SubResource("RectangleShape2D_6ch55")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

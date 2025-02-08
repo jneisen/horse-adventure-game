@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhh88arwhjaht"]
+
+[ext_resource type="Texture2D" uid="uid://dsgekp7x3x53i" path="res://Sprites/ladderworld.png" id="1_35b6w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0th10"]
+size = Vector2(147, 666)
+
+[node name="Ladder" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(238.5, 11)
+shape = SubResource("RectangleShape2D_0th10")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-310, 9)
+shape = SubResource("RectangleShape2D_0th10")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_35b6w")

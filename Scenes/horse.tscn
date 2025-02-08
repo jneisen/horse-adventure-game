@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://eygpgnpjdnxr"]
+
+[ext_resource type="Script" path="res://Scripts/horseMovement.gd" id="1_35agi"]
+[ext_resource type="Texture2D" uid="uid://b57wyhvhtd0no" path="res://Sprites/placeholderHorse.png" id="2_j7jt5"]
+[ext_resource type="Texture2D" uid="uid://buev6l6i2qu7d" path="res://Sprites/ladder.png" id="3_iotja"]
+[ext_resource type="Texture2D" uid="uid://7d8qb1o7752m" path="res://Sprites/blackSquare.png" id="4_juie6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pcj7o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j7jt5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibmj7"]
+size = Vector2(210, 94.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fxf3m"]
+font_size = 14
+
+[node name="Horse" type="Node2D"]
+z_index = 1
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_35agi")
+sprite = NodePath("sprite")
+
+[node name="sprite" type="AnimatedSprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_pcj7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-2, 75.75)
+shape = SubResource("RectangleShape2D_ibmj7")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+limit_left = -100000
+limit_top = -100000
+limit_right = 100000
+limit_bottom = 100000
+
+[node name="UI" type="Node2D" parent="CharacterBody2D"]
+z_index = 2
+
+[node name="Item" type="Node2D" parent="CharacterBody2D/UI"]
+
+[node name="Label" type="Label" parent="CharacterBody2D/UI/Item"]
+offset_left = -964.0
+offset_top = -538.0
+offset_right = -835.0
+offset_bottom = -515.0
+text = "Item Description"
+label_settings = SubResource("LabelSettings_fxf3m")
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/UI/Item"]
+position = Vector2(-903, -474)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_iotja")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CharacterBody2D/UI/Item"]
+z_index = -1
+position = Vector2(-900, -480)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_juie6")
